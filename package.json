@@ -26,9 +26,7 @@
   },
   "homepage": "https://github.com/ClaudioLillo/escuelaLoMiranda#readme",
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
+    "express": "^4.17.1",
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.1",
     "@babel/node": "^7.13.0",
