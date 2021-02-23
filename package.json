@@ -1,0 +1,41 @@
+{
+  "name": "escuelalomiranda",
+  "version": "1.0.0",
+  "description": "api for escuelalomiranda.cl",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js --exec babel-node",
+    "start": "node dist/index.js",
+    "build": "babel ./src --out-dir ./dist --source-maps --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClaudioLillo/escuelaLoMiranda.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "jsonwebtoken",
+    "rest-api"
+  ],
+  "author": "Claudio Lillo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClaudioLillo/escuelaLoMiranda/issues"
+  },
+  "homepage": "https://github.com/ClaudioLillo/escuelaLoMiranda#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.13.2",
+    "@babel/preset-env": "^7.13.0",
+    "@babel/register": "^7.13.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
