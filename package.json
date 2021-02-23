@@ -26,13 +26,14 @@
   },
   "homepage": "https://github.com/ClaudioLillo/escuelaLoMiranda#readme",
   "dependencies": {
-    "express": "^4.17.1",
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.1",
     "@babel/node": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.2",
     "@babel/preset-env": "^7.13.0",
     "@babel/register": "^7.13.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
   }
