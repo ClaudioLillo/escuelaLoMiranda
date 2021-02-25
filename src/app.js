@@ -2,6 +2,8 @@ import express, {json} from 'express'
 import morgan from 'morgan'
 const cors = require('cors')
 
+import routes from './routes'
+
 const app = express()
 
 app.use(morgan('dev'))
@@ -15,5 +17,7 @@ app.get('/', (req, res)=>{
         version: '0.1'
     })
 })
+
+app.use('/api', routes)
 
 module.exports = app
