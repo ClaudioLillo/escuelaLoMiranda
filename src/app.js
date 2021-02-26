@@ -6,6 +6,7 @@ import routes from './routes'
 
 const app = express()
 
+
 app.use(morgan('dev'))
 app.use(json())
 app.use(cors({
@@ -14,6 +15,15 @@ app.use(cors({
     credentials: true,
 }
 ))
+app.use((req, res, next)=>{
+    res.header('Access-Control-Allow-Origin','*')
+    if ('OPTIONS' === req.method){
+        res.send(200)
+    }
+    else{
+        next()
+    }
+})
 
 app.get('/', (req, res)=>{
     return res.status(200).json({
