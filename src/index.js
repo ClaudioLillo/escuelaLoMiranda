@@ -9,3 +9,4 @@ sequelize.sync({force: true}).then(()=>{
         console.log("espero que esto funcione")
     })
 })
+.catch(err=>{console.log(err)})
