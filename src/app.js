@@ -8,7 +8,12 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(json())
-app.use(cors())
+app.use(cors({
+    origin: "*",
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],
+    credentials: true,
+}
+))
 
 app.get('/', (req, res)=>{
     return res.status(200).json({
