@@ -1,7 +1,7 @@
 import User from '../models/User'
 
 export const createUser = async(req, res)=>{
-    const {name, lastName, email, password} = req.body
+    const {name, lastName, email, password, role, gradeId} = req.body
     try{
         const user = await User.findOne({
             where: {
@@ -16,9 +16,11 @@ export const createUser = async(req, res)=>{
                 name,
                 lastName,
                 email,
-                password
+                password,
+                role, 
+                gradeId
             }, {
-                fields: ['name', 'lastName', 'email', 'password']
+                fields: ['name', 'lastName', 'email', 'password', 'role', 'gradeId']
             })
             if(newUser){
                 return(res.status(201).json({msg: "user created"}))
