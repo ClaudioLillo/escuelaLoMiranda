@@ -32,7 +32,6 @@ export const createSubject = async(req, res)=>{
 }
 
 export const getAllSubjects = async(req, res)=>{
-    console.log("Estoy en la funcion")
     try{
         const subjects = await Subject.findAll()
         if(subjects){
@@ -46,4 +45,36 @@ export const getAllSubjects = async(req, res)=>{
     catch{
         return res.status(500)
     }
+}
+
+export const deleteSubject = async(req, res)=>{
+    const id = req.body.id
+    try{
+        let subject = await Subject.findByPk(id)
+        if(subject){
+            await subject.destroy()
+            return res.status(204).json({msg:"subject deleted"})
+        }
+    }
+    catch(err){
+        console.log(err)
+        return res.status(500)
+    }
+}
+
+export const updateSubject = async(req, res)=>{
+    const {id, name} = req.body
+    try{
+        let subject = await Subject.findByPk(id)
+        if(subject){
+            subject.name = name
+            await subject.save()
+            return res.json({msg: "subject updated"})
+        }
+        return res.status(404).json({msg: "subject not found"})
+    }
+    catch(err){
+        console.log(err)
+        return res.status(500)
+    } 
 }

@@ -1,7 +1,7 @@
 import express from 'express'
 
 const router = express()
-import {createSubject, getAllSubjects} from '../controllers/Subject'
+import {createSubject, getAllSubjects, updateSubject, deleteSubject} from '../controllers/Subject'
 
 router.get('/', getAllSubjects)
 
@@ -12,16 +12,8 @@ router.get('/', getAllSubjects)
 
 router.post('/', createSubject)
 
-// router.put('/:id',(req, res)=>{
-//     const {name, lastName, email, password} = req.body
-//     const id = req.params.id
-//     return res.status(200).json({msg: "user updated"})
+router.put('/',updateSubject)
 
-// })
-
-// router.delete('/:id', (req, res)=>{
-//     const user = "user"
-//     return res.status(200).json({user: user})
-// })
+router.delete('/', deleteSubject)
 
 export default router
