@@ -40,7 +40,7 @@ export const createCourse = async(req, res)=>{
 
 export const getAllCourses = async(req, res)=>{
     try{
-        const courses = await Subject.findAll()
+        const courses = await Course.findAll()
         if(courses){
             return res.status(200).json(courses)
         }
