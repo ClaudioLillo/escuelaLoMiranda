@@ -71,3 +71,38 @@ export const getAllUsers = async(req, res)=>{
     }
     
 }
+
+export const updateUser = async(req, res)=>{
+    const {id, name, lastName, email, password, role, gradeId} = req.body
+    try{
+        let user = await User.findByPk(id)
+        if(user){
+            user.email = email
+            user.password = password
+            user.role = role
+            user.gradeId = gradeId
+            await user.save()
+            return res.json({msg: "user updated"})
+        }
+        return res.status(404).json({msg: "user not found"})
+    }
+    catch(err){
+        console.log(err)
+        return res.status(500)
+    } 
+}
+
+export const deleteUser = async(req, res)=>{
+    const id = req.body.id
+    try{
+        let user = await User.findByPk(id)
+        if(user){
+            await user.destroy()
+            return res.status(204).json({msg:"user deleted"})
+        }
+    }
+    catch(err){
+        console.log(err)
+        return res.status(500)
+    }
+}
