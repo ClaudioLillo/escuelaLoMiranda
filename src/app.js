@@ -41,6 +41,13 @@ app.use('/api', routes)
 
 app.post('/seed', async(req, res)=>{
     try{
+        let u1 = await User.findOne({where: {email: "cilillo@uc.cl"}})
+        let u2 = await User.findOne({where: {email: "student@student.cl"}})
+        let u3 = await User.findOne({where: {email: "teacher@teacher.cl"}})
+
+        if(u1 && u2 && u3){
+            return res.status(200).json({msg: "users were already created"})
+        }
         let admin = await User.create({
             email: "cilillo@uc.cl",
             name: "Claudio",
