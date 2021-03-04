@@ -2,6 +2,8 @@ import express, {json} from 'express'
 import morgan from 'morgan'
 const cors = require('cors')
 
+import User from './models/User'
+
 import routes from './routes'
 
 const app = express()
@@ -36,5 +38,39 @@ app.get('/', (req, res)=>{
 })
 
 app.use('/api', routes)
+
+app.post('/seed', async(req, res)=>{
+    try{
+        let admin = await User.create({
+            email: "cilillo@uc.cl",
+            name: "Claudio",
+            lastName: "Lillo",
+            password: "1234",
+            role: "admin"
+        })
+        let student = await User.create({
+            email: "student@student.cl",
+            name: "student",
+            lastName: "user",
+            password: "1234",
+            role: "student"
+        })
+        let teacher = await User.create({
+            email: "teach@teach.cl",
+            name: "teacher",
+            lastName: "user",
+            password: "1234",
+            role: "teacher"
+        })
+        if(admin && student && teacher){
+            return res.status(201).json({msg: "seed works"})
+        }
+    }
+    catch(err){
+        return res.status(500)
+    }
+    
+})
+
 
 module.exports = app
