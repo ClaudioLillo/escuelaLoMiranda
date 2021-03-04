@@ -2,6 +2,9 @@ import Course from '../models/Course'
 
 export const createCourse = async(req, res)=>{
     const {teacher, gradeId, subjectId} = req.body
+    console.log(teacher)
+    console.log(gradeId)
+    console.log(subjectId)
     try{
         const course = await Course.findOne({
             where: {
