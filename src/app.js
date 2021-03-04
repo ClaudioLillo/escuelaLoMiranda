@@ -40,6 +40,9 @@ app.get('/', (req, res)=>{
 app.use('/api', routes)
 
 app.post('/seed', async(req, res)=>{
+    res.header('Access-Control-Allow-Origin','*')
+    res.header('Access-Control-Allow-Methods', 'POST')
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-Width')
     try{
         let u1 = await User.findOne({where: {email: "cilillo@uc.cl"}})
         let u2 = await User.findOne({where: {email: "student@student.cl"}})
