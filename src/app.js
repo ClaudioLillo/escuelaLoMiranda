@@ -39,10 +39,7 @@ app.get('/', (req, res)=>{
 
 app.use('/api', routes)
 
-app.post('/seed', async(req, res)=>{
-    res.header('Access-Control-Allow-Origin','*')
-    res.header('Access-Control-Allow-Methods', 'POST,OPTIONS')
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-Width')
+app.post('/seed', cors, async(req, res)=>{
     if ('OPTIONS' === req.method){
         res.send(200)
     }
