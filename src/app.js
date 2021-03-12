@@ -1,6 +1,7 @@
 import express, {json} from 'express'
 import morgan from 'morgan'
 const cors = require('cors')
+var path = require('path')
 
 import User from './models/User'
 
@@ -17,7 +18,9 @@ app.use(cors({
     credentials: true,
 }
 ))
-app.use(express.static('uploads'))
+
+app.use(express.static(path.join(__dirname, '../uploads'), { maxAge: 86400000 }))
+
 app.use(function(req, res, next){
     res.header('Access-Control-Allow-Origin','*')
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')

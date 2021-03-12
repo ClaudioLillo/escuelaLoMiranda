@@ -74,9 +74,12 @@ export const getAllUsers = async(req, res)=>{
 
 export const updateUser = async(req, res)=>{
     const {id, name, lastName, email, password, role, gradeId} = req.body
+
     try{
         let user = await User.findByPk(id)
         if(user){
+            user.name = name
+            user.lastName = lastName
             user.email = email
             user.password = password
             user.role = role
