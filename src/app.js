@@ -12,26 +12,8 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(json())
-app.use(cors({
-    origin: "*",
-    methods: ['GET', 'POST', 'DELETE', 'PUT'],
-    credentials: true,
-}
-))
 
-app.use(express.static(path.join(__dirname, '../uploads'), { maxAge: 86400000 }))
-
-app.use(function(req, res, next){
-    res.header('Access-Control-Allow-Origin','*')
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-Width')
-    if ('OPTIONS' === req.method){
-        res.send(200)
-    }
-    else{
-        next()
-    }
-})
+app.use(cors())
 
 app.get('/', (req, res)=>{
     return res.status(200).json({
