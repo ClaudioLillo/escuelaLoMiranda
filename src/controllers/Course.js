@@ -15,12 +15,11 @@ export const createCourse = async(req, res)=>{
         }
         else{
             const newCourse = await Course.create({
-                teacher,
                 gradeId,
                 subjectId,
                 userId
             }, {
-                fields: ['teacher', 'gradeId', 'subjectId','userId']
+                fields: ['gradeId', 'subjectId','userId']
             })
             if(newCourse){
                 return(res.status(201).json({msg: "course created", data: newCourse}))
