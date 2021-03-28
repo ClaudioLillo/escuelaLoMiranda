@@ -1,11 +1,10 @@
 import Course from '../models/Course'
 
 export const createCourse = async(req, res)=>{
-    const {teacher, gradeId, subjectId, userId} = req.body
+    const  {gradeId, subjectId, userId} = req.body
     try{
         const course = await Course.findOne({
             where: {
-                teacher: teacher,
                 gradeId: gradeId, 
                 subjectId: subjectId,
                 userId: userId
