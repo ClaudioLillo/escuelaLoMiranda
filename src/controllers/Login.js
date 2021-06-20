@@ -4,6 +4,7 @@ require('dotenv').config()
 
 export const userLogin = async(req, res) =>{
     const {email, password} = req.body
+    console.log(email)
     if(!(email && password)){
         return res.status(400).json({msg: "missing argument"})
     }
